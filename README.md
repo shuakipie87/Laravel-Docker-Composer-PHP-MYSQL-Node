@@ -37,86 +37,30 @@ This setup ensures a fully isolated development environment for Laravel applicat
    ```bash
    git clone https://github.com/<your-username>/<your-repo>.git
    cd <your-repo>
-Start Docker containers
+## 🚀 Start the Project
 
-bash
-Copy code
+
+### 1️⃣ Start Docker Containers
+```bash
 docker compose up -d --build
-Enter PHP container
 
-bash
-Copy code
+
 docker exec -it laravel_app bash
-Install Laravel inside src/ (if not already present)
 
-bash
-Copy code
 cd /var/www
 composer create-project --prefer-dist laravel/laravel .
-Configure environment
 
-bash
-Copy code
+
 cp .env.example .env
 php artisan key:generate
-Update .env for database connection:
 
-env
-Copy code
+
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
 DB_DATABASE=laravel
 DB_USERNAME=laravel
 DB_PASSWORD=root
-Run migrations (optional)
 
-bash
-Copy code
+
 php artisan migrate
-🌐 Access the Application
-Open your browser at:
-
-arduino
-Copy code
-http://localhost
-You should see the Laravel welcome page.
-
-🧱 Folder Structure
-pgsql
-Copy code
-laravel-docker/
-├── docker-compose.yml
-├── php/
-│   └── Dockerfile
-├── nginx/
-│   └── default.conf
-└── src/                 <-- Your Laravel application
-    ├── app/
-    ├── bootstrap/
-    ├── config/
-    ├── database/
-    ├── public/
-    ├── routes/
-    └── artisan
-⚙ Useful Docker Commands
-Stop containers:
-
-bash
-Copy code
-docker compose down
-View logs:
-
-bash
-Copy code
-docker compose logs -f
-Rebuild containers:
-
-bash
-Copy code
-docker compose up -d --build
-Enter PHP container:
-
-bash
-Copy code
-docker exec -it laravel_app bash
